@@ -5,16 +5,16 @@ import { ContactsCollection } from '../db/models/Contact.js';
 
 export const checkUser = async (req, res, next) => {
 
-    const { user } = req;
+    const { _id: userId } = req.user;
 
     const { contactId } = req.params;
 
-    if (!user) {
+    if (!userId) {
         next(createHttpError(401, 'User not authenticated'));
         return;
     }
 
-    const contact = await ContactsCollection.findOne({ _id: contactId, userId: user._id });
+    const contact = await ContactsCollection.findOne({ _id: contactId, userId });
 
     if (!contact) {
         return next(createHttpError(404, 'Contact not found'));

@@ -11,11 +11,11 @@ import { checkUser } from '../middlewares/checkUser.js';
 const router = Router();
 router.use(authenticate);
 
-router.get('/', checkUser, ctrlWrapper(getContactsController));
+router.get('/', ctrlWrapper(getContactsController));
 
 router.get('/:contactId', isValidId, checkUser, ctrlWrapper(getContactByIdController));
 
-router.post('/', checkUser, validateBody(createContactSchema), ctrlWrapper(createContactController));
+router.post('/', validateBody(createContactSchema), ctrlWrapper(createContactController));
 
 router.patch('/:contactId', isValidId, checkUser, validateBody(updateContactSchema), ctrlWrapper(patchContactController));
 

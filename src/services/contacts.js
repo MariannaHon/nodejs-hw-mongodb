@@ -15,17 +15,17 @@ export const getAllContacts = async ({
 
     const contactsQuery = ContactsCollection.find(filter);
 
-    if (filter.contactType) {
-        contactsQuery.where('contactType').equals(filter.contactType);
-    }
+    // if (filter.contactType) {
+    //     contactsQuery.where('contactType').equals(filter.contactType);
+    // }
 
-    if (filter.isFavourite) {
-        contactsQuery.where('isFavourite').equals(filter.isFavourite);
-    }
+    // if (filter.isFavourite) {
+    //     contactsQuery.where('isFavourite').equals(filter.isFavourite);
+    // }
 
     const [contactsCount, contacts] = await Promise.all([
-        ContactsCollection.find()
-            .merge(contactsQuery)
+        ContactsCollection.find(filter)
+            // .merge(contactsQuery)
             .countDocuments(),
 
         contactsQuery
