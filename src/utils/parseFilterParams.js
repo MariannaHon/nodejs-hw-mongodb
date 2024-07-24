@@ -1,5 +1,13 @@
 
+const parseFavourite = (isFavourite) => {
+    const isString = typeof isFavourite === 'string';
+    if (!isString) return;
 
+    if (isFavourite === 'true')
+        return true;
+    if (isFavourite === 'false')
+        return false;
+};
 
 const parseType = (type) => {
     const isString = typeof type === 'string';
@@ -10,15 +18,6 @@ const parseType = (type) => {
     }
 };
 
-const parseFavourite = (isFavourite) => {
-    const isString = typeof isFavourite === 'string';
-    if (!isString) return;
-
-    if (isFavourite === 'true')
-        return true;
-    if (isFavourite === 'false')
-        return false;
-};
 
 export const parseFilterParams = (query) => {
     const { type, isFavourite } = query;
