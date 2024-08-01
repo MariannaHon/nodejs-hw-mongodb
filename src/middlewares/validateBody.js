@@ -1,4 +1,5 @@
 
+import createHttpError from 'http-errors';
 
 export const validateBody = (schema) => async (req, res, next) => {
     try {
@@ -6,11 +7,12 @@ export const validateBody = (schema) => async (req, res, next) => {
             abortEarly: false,
         });
     } catch (error) {
-        return res.status(400).json({
-            status: 400,
-            message: error.details.map((err) => err.message).join(', '),
-        });
+        next(
+            createHttpError(
+                400,
+                error.details.map((err) => err.message).join(', '),
+            ),
+        );
     }
-    next();
 };
 
