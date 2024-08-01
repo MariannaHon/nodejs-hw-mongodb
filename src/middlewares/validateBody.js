@@ -7,9 +7,11 @@ export const validateBody = (schema) => async (req, res, next) => {
         });
         next();
     } catch (error) {
-        next(createHttpError(400,
-            error.details.map((err) => err.message).join(', '),
-        ));
+        return res.status(400).json({
+            status: 400,
+            message: error.details.map((err) => err.message).join(', '),
+        });
     }
+    next();
 };
 
