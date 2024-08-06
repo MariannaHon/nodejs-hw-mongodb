@@ -92,14 +92,6 @@
               "type": "string",
               "example": true
             }
-          },
-          {
-            "in": "query",
-            "name": "userId",
-            "schema": {
-              "type": "number",
-              "example": "66a1118618cc6e725198718g"
-            }
           }
         ],
         "responses": {
@@ -198,22 +190,11 @@
               "schema": {
                 "type": "object",
                 "required": [
-                  "userId",
                   "name",
                   "phoneNumber",
                   "contactType"
                 ],
                 "properties": {
-                  "_id": {
-                    "description": "Contact id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
-                  "userId": {
-                    "description": "User id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
                   "name": {
                     "description": "Contact name",
                     "type": "string",
@@ -366,26 +347,23 @@
             "bearerAuth": []
           }
         ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "65ca67e7ae7f10c88b598384"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "_id",
-                  "userId"
-                ],
                 "properties": {
-                  "_id": {
-                    "description": "Contact id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
-                  "userId": {
-                    "description": "User id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
-                  },
                   "name": {
                     "description": "Contact name",
                     "type": "string",
