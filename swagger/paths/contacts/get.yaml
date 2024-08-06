@@ -38,11 +38,6 @@ parameters:
     schema:
       type: string
       example: true
-  - in: query
-    name: userId
-    schema:
-      type: number
-      example: 66a1118618cc6e725198718g
 responses:
   '200':
     description: 'Successfully found contacts!'
